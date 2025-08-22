@@ -1,0 +1,127 @@
+*{box-sizing:border-box}html,body{height:100%}
+:root{
+  --bg:#181818;
+  --text:#e0e0e0;
+  --muted:#b5b5b5;
+  --glass:rgba(40,40,40,0.12);
+  --border:rgba(80,80,80,0.25);
+  --shadow:0 20px 60px rgba(0,0,0,0.6);
+  --send-btn-bg: linear-gradient(90deg, #232323 0%, #181818 100%);
+  --send-btn-color: #e0e0e0;
+  --icon-btn-bg: #232323;
+  --icon-btn-color: #e0e0e0;
+}
+body{
+  margin:0;
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+  color:var(--text);
+  background: linear-gradient(135deg, #181818 0%, #232323 100%);
+  overflow-x:hidden;
+}
+.bg .blob{
+  position:fixed;
+  filter:blur(60px);
+  opacity:.5;
+  z-index:-1;
+  mix-blend-mode:screen;
+}
+.blob-1{width:420px;height:420px;background:conic-gradient(from 0deg,#232323,#181818,#333);top:-80px;left:-60px;animation:float 12s ease-in-out infinite}
+.blob-2{width:520px;height:520px;background:conic-gradient(from 90deg,#232323,#181818,#333);bottom:-120px;right:-80px;animation:float 14s ease-in-out infinite reverse}
+.blob-3{width:380px;height:380px;background:conic-gradient(from 180deg,#232323,#181818,#333);top:30%;left:60%;animation:float 16s ease-in-out infinite}
+
+@keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-20px) translateX(10px)}}
+
+.header{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  max-width:1100px;margin:40px auto 10px;padding:14px 18px;
+  border:1px solid var(--border);border-radius:18px;background:var(--glass);backdrop-filter:blur(10px);
+  box-shadow: var(--shadow);
+}
+.logo{width:40px;height:40px;display:block}
+.title-wrap h1{margin:0;font-size:24px;letter-spacing:.2px}
+.subtitle{margin:2px 0 0 0;color:var(--muted);font-size:14px}
+
+.container{max-width:1100px;margin:0 auto;padding:20px}
+.card{
+  border:1px solid var(--border);border-radius:24px;padding:18px;
+  background: linear-gradient(135deg, #181818 0%, #232a3d 100%);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+}
+.messages{
+  height:58vh;overflow:auto;padding:6px;display:flex;flex-direction:column;gap:7px;
+  scroll-behavior:smooth;
+  background: linear-gradient(120deg, #181818 80%, #232a3d 100%);
+  border-radius: 18px;
+}
+.msg{
+  max-width:70%;padding:8px 10px;border-radius:12px;border:1px solid var(--border);
+  background:rgba(30,30,30,0.85);line-height:1.2;white-space:pre-wrap;word-wrap:break-word;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+  transform: translateZ(0);
+  font-size: 13px;
+}
+.msg.user{
+  align-self:flex-end;background:linear-gradient(160deg, rgba(60,60,60,0.35), rgba(80,80,80,0.18));
+}
+.msg.bot{
+  align-self:flex-start;background:linear-gradient(160deg, rgba(40,40,40,0.18), rgba(0,0,0,0.22));
+}
+.input-row{
+  display:flex;gap:7px;margin-top:12px;align-items:center;
+}
+.input-row input{
+  flex:1;border-radius:10px;border:1px solid var(--border);padding:10px 12px;
+  background:rgba(40,40,40,0.18);color:var(--text);outline:none;
+  font-size:13px;
+  transition: box-shadow .2s ease, transform .15s ease;
+}
+.input-row input:focus{box-shadow:0 0 0 3px rgba(0,212,255,0.35), inset 0 0 0 1px rgba(255,255,255,0.12); transform: translateY(-1px);}
+.btn-3d{
+  border:none;border-radius:10px;padding:10px 16px;font-weight:600;color:var(--send-btn-color);
+  background: var(--send-btn-bg);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.45), inset 0 2px 4px rgba(255,255,255,0.10);
+  cursor:pointer;transition: transform .12s ease, box-shadow .2s ease;
+  font-size:13px;
+}
+.btn-3d:active{transform: translateY(1px) scale(0.98); box-shadow: 0 4px 8px rgba(0,0,0,0.45);}
+.hint{color:var(--muted);margin-top:10px;font-size:11px}
+/* PDF upload and voice button styles */
+.pdf-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--icon-btn-bg);
+  color: var(--icon-btn-color);
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 2px;
+  transition: background 0.2s;
+}
+.pdf-label:hover {
+  background: #333;
+}
+.pdf-upload {
+  display: none;
+}
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--icon-btn-bg);
+  color: var(--icon-btn-color);
+  border: none;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 2px;
+  transition: background 0.2s;
+}
+.icon-btn:hover {
+  background: #333;
+}

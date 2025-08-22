@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Sign Up - MY VIE</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+  <main class="container">
+    <section class="card glass tilt" style="max-width:400px;margin:60px auto;">
+      <h2 style="text-align:center;">Sign Up</h2>
+      <form method="POST" action="/signup" class="input-row" style="flex-direction:column;gap:18px;">
+        <input name="username" type="text" placeholder="Username" required style="width:100%;"/>
+        <input name="password" type="password" placeholder="Password" required style="width:100%;"/>
+        <button type="submit" class="btn-3d" style="width:100%;">Sign Up</button>
+      </form>
+      <div style="text-align:center;margin-top:18px;">
+        <a href="/login" style="color:var(--muted);">Already have an account? Login</a>
+      </div>
+      {% if error %}<div style="color:#ff6a00;text-align:center;margin-top:10px;">{{ error }}</div>{% endif %}
+    </section>
+  </main>
+</body>
+</html>

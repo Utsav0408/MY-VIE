@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>MY VIE</title>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+  <!-- Animated gradient background blobs -->
+  <div class="bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <header class="header tilt">
+    <img src="{{ url_for('static', filename='favicon.svg') }}" alt="logo" class="logo"/>
+    <div class="title-wrap">
+      <h1>MY VIE</h1>
+      <p class="subtitle">Ask anything. Get fast, smart answers.</p>
+    </div>
+    {% if username %}
+    <div style="margin-left:auto;text-align:right;">
+      <span style="color:var(--muted);font-size:15px;">👤 {{ username }}</span>
+      <a href="/logout" class="btn-3d" style="margin-left:12px;padding:6px 14px;font-size:13px;">Logout</a>
+    </div>
+    {% endif %}
+  </header>
+
+  <main class="container">
+    <section class="card glass tilt">
+      <div id="messages" class="messages" aria-live="polite"></div>
+
+      <form id="askForm" class="input-row" autocomplete="off">
+        <input id="question" name="question" type="text" placeholder="Type your question..." required/>
+        <label for="pdfUpload" class="pdf-label" title="Upload PDF">
+          <span>&#128462;</span>
+        </label>
+        <input type="file" id="pdfUpload" class="pdf-upload" accept="application/pdf"/>
+        <button type="button" class="icon-btn" id="voiceBtn" title="Voice Input">
+          <span>&#127908;</span>
+        </button>
+        <button id="sendBtn" type="submit" class="btn-3d">Send</button>
+      </form>
+
+      <footer class="hint">
+        <span>Tip:</span> Try “Explain recursion in simple terms”
+      </footer>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
